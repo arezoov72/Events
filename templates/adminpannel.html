@@ -1,0 +1,160 @@
+{% load static %}
+{% load jalali_tags %}
+{% load tz %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>ثبت اطلاعات مناسبتها</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="{% static 'admin/events/images/icons/favicon.ico' %}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'admin/events/vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'admin/events/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'admin/events/vendor/animate/animate.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'admin/events/vendor/css-hamburgers/hamburgers.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'admin/events/vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'admin/events/css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'admin/events/css/main.css' %}">
+<!--===============================================================================================-->
+<!-- Include jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<link href="{% static 'admin/css/fonts.min.css' %}" rel="stylesheet">
+
+
+
+</head>
+<body>
+
+	<div class="contact1">
+        <div class="container-contact1">
+            <a href="/event/logout" style="float: left;color: red;font-size: 20px;" >خروج</a>
+			<div class="contact1-pic js-tilt" data-tilt>
+				<a href="/event" ><img src="{% static 'admin/events/images/img-01.png' %}" alt="IMG" ></a>
+            </div>
+			<p>{{ form.date|to_jalali:'%y/%m/%d' }}</p>
+			<form class="contact1-form validate-form" method="POST" enctype="multipart/form-data">{% csrf_token %} 
+				<span class="contact1-form-title" style="font-weight: bold;">
+					ثبت مناسبتها
+				</span>
+
+				<div class="wrap-input1 validate-input" data-validate = "title is required"  >
+					<input class="input1" type="text" name="title" placeholder="عنوان" required >
+					<span class="shadow-input1"></span>
+				</div>
+				
+				<div class="wrap-input1 validate-input" >	
+					<label for="date" id="date"> تاریخ نمایش</label>
+					<input type="text" style="font-size: 27px;" required  name="date" class="date" id="date"  value={% now "YYYY-MM-DD  HH:mm" %}  />
+					<span class="shadow-input1"></span>
+					
+
+				
+
+				<div class="wrap-input1 validate-input" >
+					<input class="input1" type="file" name="picture" placeholder="بارگذاری تصویر" accept="image/x-png,image/gif,image/jpeg">
+					<span class="shadow-input1"></span>
+				</div>
+
+				<div class="wrap-input1 validate-input" data-validate = "event is required">
+					<input class="input1" type="text" name="event" placeholder="مناسبت" >
+					<span class="shadow-input1"></span>
+				</div>
+				<div class="wrap-input1 validate-input" data-validate = "event is required">
+					<input class="input1" type="text" name="tousers" id='tousers' placeholder="نمایش برای"  >
+					<span class="shadow-input1"></span>
+				</div>
+
+				<div class="wrap-input1 validate-input" >
+					<textarea class="input1" name="information" placeholder="اطلاعات بیشتر"></textarea>
+					<span class="shadow-input1"></span>
+				</div>
+
+				<div class="container-contact1-form-btn">
+					<button class="contact1-form-btn"  >
+						<span>
+							ارسال 
+							<i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+						</span>
+                    </button>
+				</div>
+			</form>
+            
+		</div>
+	</div>
+
+
+
+
+<!--===============================================================================================-->
+	<script src="{% static 'admin/events/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'admin/events/vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'admin/events/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'admin/events/vendor/select2/select2.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'admin/events/vendor/tilt/tilt.jquery.min.js' %}"></script>
+	<script >
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-23581568-13');
+</script>
+
+<!--===============================================================================================-->
+	<script src="{% static 'admin/events/js/main.js' %}"></script>
+	<script src="//code.jquery.com/jquery.min.js"></script>
+	<!-- By default, Datepicker using jQuery, you need to set your script after loading jQuery! -->
+	<!-- loading directly -->
+	<link rel="stylesheet" href="{% static 'admin/jquery.ui.datepicker.jalali/themes/base/jquery-ui.min.css' %}">
+	<script src="{% static 'admin/js/django_jalali.min.js' %}"></script>
+<!-- OR -->
+<!-- loading by form (if used AdminJalaliDateWidget) -->
+	{{ form.media }}
+<!-- Include jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<!-- Include Date Range Picker -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css">
+
+<link rel="stylesheet" href="{% static 'admin/dailyreport/css/persian.datepicker.css'%}">
+<script src="{% static 'admin/dailyreport/js/jquery.js'%}"></script>
+<script src="{% static 'admin/dailyreport/js/persian.date.js'%}"></script>
+<script src="{% static 'admin/dailyreport/js/persian.datepicker.js'%}"></script>
+
+
+<!-- Persian date picker -->
+<script type="text/javascript">
+$(document).ready(function() {
+  $(".date").pDatepicker({
+	observer: true,
+format: 'YYYY-MM-DD',
+altField: '.observer-example-alt'
+});
+  
+});
+
+
+</script>
+
+</body>
+</html>

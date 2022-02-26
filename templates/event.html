@@ -1,0 +1,146 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+  
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Template Mo">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+
+    <title>مناسبتها</title>
+<!--
+
+ART FACTORY
+
+https://templatemo.com/tm-537-art-factory
+
+-->
+    <!-- Additional CSS Files -->
+    <link rel="icon" type="image/png" href="{% static 'admin/events/images/lotus-icon.png' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/events/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/events/css/font-awesome.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/events/css/templatemo-art-factory.css'%}">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/events/css/owl-carousel.css'%}">
+    <link href="{% static 'admin/css/fonts.min.css' %}" rel="stylesheet">
+        
+  
+
+
+    </head>
+    
+
+    <body onclick="window.open('', '_self', '')">
+    
+        <!-- ***** Preloader Start ***** -->
+        <div id="preloader">
+            <div class="jumper">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div> 
+        <!-- ***** Preloader End ***** -->
+    
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky" style="font-family: 'BNazanin';">
+        <div class="container" style="font-family: 'BNazanin';">
+            <div class="row" style="font-family: 'BNazanin';">
+                <div class="col-12" style="font-family: 'BNazanin';">
+                    <nav class="main-nav" style="font-family: 'BNazanin';">
+                        <!-- ***** Logo Start ***** -->
+                        {% for event in allevents %}
+                        {% if forloop.last %}
+                        <a href="#" class="logo" style="font-family: 'BNazanin';">{{event.title}}</a>
+                        <!-- ***** Logo End ***** -->
+                       
+                      
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+
+    <!-- ***** Welcome Area Start ***** -->
+    <div class="welcome-area" id="welcome">
+
+        <!-- ***** Header Text Start ***** -->
+        <div class="header-text">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" data-scroll-reveal="enter right move 30px over 0.6s after 0.4s">
+                        {% if event.picture %}	
+                        <img src="{{event.picture.url}}" class="rounded img-fluid d-block mx-auto" >{% endif %}
+                    </div> 
+                    <div class="left-text col-lg-6 col-md-6 col-sm-12 col-xs-12" data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
+                        <h1>{{event.event}}</h1>
+                        <p>{{event.information}}</p>
+                        
+                        <a href="#about" class="main-button-slider" >اطلاعات بیشتر</a>
+                        <a href="javascript:history.go(-1);"   class="main-button-slider" id="lnkLogOut" >بستن</a>
+                        
+                                    
+
+                             
+                      
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+   
+        <!-- ***** Header Text End ***** -->
+    </div>
+    <h1 style="font-weight: bold;font-size: 15px;" hidden >{{event.username_id}}</h1>
+    {% endif %}
+    {% endfor %}
+    <!-- ***** Welcome Area End ***** -->
+    <!-- ***** Footer Start ***** -->
+    <footer id="about" hidden>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-md-12 col-sm-12">
+                    <p class="copyright">
+                        جهت اطلاعات بیشتر و یا انجام کار می باشد
+                
+                </p>
+                </div>
+               
+    </footer>
+    
+   <!-- jQuery -->
+   <script src="{% static 'admin/events/js/jquery-2.1.0.min.js'%}"></script>
+
+   <!-- Bootstrap -->
+   <script src="{% static 'admin/events/js/popper.js'%}"></script>
+   <script src="{% static 'admin/events/js/bootstrap.min.js'%}"></script>
+
+   <!-- Plugins -->
+   <script src="{% static 'admin/events/js/owl-carousel.js'%}"></script>
+   <script src="{% static 'admin/events/js/scrollreveal.min.js'%}"></script>
+   <script src="{% static 'admin/events/js/waypoints.min.js'%}"></script>
+   <script src="{% static 'admin/events/js/jquery.counterup.min.js'%}"></script>
+   <script src="{% static 'admin/events/js/imgfix.min.js'%}"></script> 
+   
+   <!-- Global Init -->
+   <script src="{% static 'admin/events/js/custom.js'%}"></script>
+
+  </body>
+  
+</html>
+<script>
+    function close_window() {
+        if (confirm("بستن صفحه")) {
+            close();
+        }
+    }
+</script>
